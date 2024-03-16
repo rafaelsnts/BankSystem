@@ -139,6 +139,7 @@
             btnCadastrarTransacao.Caption = "Cadastrar";
             btnCadastrarTransacao.Id = 10;
             btnCadastrarTransacao.Name = "btnCadastrarTransacao";
+            btnCadastrarTransacao.ItemClick += btnCadastrarTransacao_ItemClick;
             // 
             // btnEditarTransacao
             // 
@@ -182,15 +183,15 @@
             barDockControlTop.Dock = DockStyle.Top;
             barDockControlTop.Location = new Point(0, 0);
             barDockControlTop.Manager = barManager1;
-            barDockControlTop.Size = new Size(461, 20);
+            barDockControlTop.Size = new Size(951, 20);
             // 
             // barDockControlBottom
             // 
             barDockControlBottom.CausesValidation = false;
             barDockControlBottom.Dock = DockStyle.Bottom;
-            barDockControlBottom.Location = new Point(0, 273);
+            barDockControlBottom.Location = new Point(0, 466);
             barDockControlBottom.Manager = barManager1;
-            barDockControlBottom.Size = new Size(461, 20);
+            barDockControlBottom.Size = new Size(951, 20);
             // 
             // barDockControlLeft
             // 
@@ -198,15 +199,15 @@
             barDockControlLeft.Dock = DockStyle.Left;
             barDockControlLeft.Location = new Point(0, 20);
             barDockControlLeft.Manager = barManager1;
-            barDockControlLeft.Size = new Size(0, 253);
+            barDockControlLeft.Size = new Size(0, 446);
             // 
             // barDockControlRight
             // 
             barDockControlRight.CausesValidation = false;
             barDockControlRight.Dock = DockStyle.Right;
-            barDockControlRight.Location = new Point(461, 20);
+            barDockControlRight.Location = new Point(951, 20);
             barDockControlRight.Manager = barManager1;
-            barDockControlRight.Size = new Size(0, 253);
+            barDockControlRight.Size = new Size(0, 446);
             // 
             // barSubItem2
             // 
@@ -225,7 +226,7 @@
             // 
             pnl_Inicio.Location = new Point(0, 26);
             pnl_Inicio.Name = "pnl_Inicio";
-            pnl_Inicio.Size = new Size(461, 267);
+            pnl_Inicio.Size = new Size(951, 460);
             pnl_Inicio.TabIndex = 4;
             // 
             // formMenuPrincipal
@@ -233,7 +234,7 @@
             Appearance.Options.UseFont = true;
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(461, 293);
+            ClientSize = new Size(951, 486);
             Controls.Add(pnl_Inicio);
             Controls.Add(barDockControlLeft);
             Controls.Add(barDockControlRight);

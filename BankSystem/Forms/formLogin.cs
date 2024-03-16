@@ -1,6 +1,9 @@
 ﻿using BankSystem.Forms;
 using BankSystem.ModelsJson;
+using DevExpress.DataAccess.Native.Web;
+using DevExpress.Pdf.Native.BouncyCastle.Asn1.Ocsp;
 using DevExpress.XtraEditors;
+using DevExpress.XtraSpreadsheet.Import.Xls;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -19,14 +22,16 @@ namespace BankSystem
 {
     public partial class formLogin : DevExpress.XtraEditors.XtraForm
     {
-        formMenuPrincipal menuPrincipal = new formMenuPrincipal();
 
         public formLogin()
         {
             InitializeComponent();
+            
+
         }
         private async void btnLogar_Click(object sender, EventArgs e)
         {
+
             try
             {
                 var dadosLogin = new
@@ -43,21 +48,26 @@ namespace BankSystem
                 {
                     httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+                    var content = new StringContent(jsonDadosLogin, Encoding.UTF8, "application/json");
 
-                    HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
+                    HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content);
+
+                    string responseData = "";
 
                     if (response.IsSuccessStatusCode)
                     {
-                        string responseBody = await response.Content.ReadAsStringAsync();
+                        responseData = await response.Content.ReadAsStringAsync();
 
-                        //UsuarioJsonDTO usuario = JsonConvert.DeserializeObject<UsuarioJsonDTO>(responseBody);
+                        UsuarioJsonDTO dadosUsuario = JsonConvert.DeserializeObject<UsuarioJsonDTO>(responseData);
+                        //MessageBox.Show($"Usuario: {dadosUsuario.UsuNome} \nSenha: {dadosUsuario.UsuSenha} \nEmail: {dadosUsuario.UsuEmail}");
 
-                        MessageBox.Show(responseBody);
+                        formMenuPrincipal menuPrincipal = new formMenuPrincipal(dadosUsuario);
                         menuPrincipal.ShowDialog();
                     }
                     else
                     {
-                        MessageBox.Show($"Falha no login. Status: {response.StatusCode}");
+                        responseData = await response.Content.ReadAsStringAsync();
+                        MessageBox.Show("Falha na solicitação, Erro: \n" + responseData);
                     }
                 }
             }
@@ -65,13 +75,15 @@ namespace BankSystem
             {
                 MessageBox.Show($"Ocorreu um erro ao tentar fazer login: {ex.Message}");
             }
-
         }
 
         private void btnCadastarSe_Click(object sender, EventArgs e)
         {
+
             formCadastrarUsuario formCadastrarUsuario = new formCadastrarUsuario();
             formCadastrarUsuario.ShowDialog();
+
+
         }
     }
 }

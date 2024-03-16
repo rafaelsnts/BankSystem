@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankSystem.ModelsJson
 {
-    internal class UsuarioJsonDTO
+    public class UsuarioJsonDTO
     {       
         [JsonProperty("usu_id")]
         public long UsuId { get; set; }

@@ -49,6 +49,7 @@
             // 
             // txtUsuario
             // 
+            txtUsuario.EditValue = "Rafael";
             txtUsuario.Location = new Point(283, 60);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Properties.Appearance.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -58,6 +59,7 @@
             // 
             // txtSenha
             // 
+            txtSenha.EditValue = "1234";
             txtSenha.Location = new Point(283, 142);
             txtSenha.Name = "txtSenha";
             txtSenha.Properties.Appearance.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -178,8 +180,6 @@
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.TextEdit txtUsuario;
         private DevExpress.XtraEditors.TextEdit txtSenha;
         private DevExpress.XtraEditors.SeparatorControl separatorControl1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
@@ -189,5 +189,6 @@
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.SimpleButton btnCadastarSe;
+        public DevExpress.XtraEditors.TextEdit txtUsuario;
     }
 }

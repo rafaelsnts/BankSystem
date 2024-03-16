@@ -1,4 +1,7 @@
-﻿using DevExpress.XtraEditors;
+﻿using BankSystem.Models;
+using BankSystem.ModelsJson;
+using DevExpress.XtraEditors;
+using DevExpress.XtraSpreadsheet.Export;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +16,16 @@ namespace BankSystem.Forms
 {
     public partial class formMenuPrincipal : DevExpress.XtraEditors.XtraForm
     {
-        public formMenuPrincipal()
+        private UsuarioJsonDTO usuarioLogado;
+
+        public formMenuPrincipal(UsuarioJsonDTO _usuarioLogado)
         {
             InitializeComponent();
+            usuarioLogado = _usuarioLogado;
+            
         }
+
+      
         public void showChildForminPanel(object Form)
         {
             if (this.pnl_Inicio.Controls.Count > 0)
@@ -46,5 +55,10 @@ namespace BankSystem.Forms
 
         }
 
+        private void btnCadastrarTransacao_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            formCadastrarTransacoes abrircadastrarTransacoes = new formCadastrarTransacoes(usuarioLogado.UsuNome);
+            abrircadastrarTransacoes.ShowDialog();
+        }
     }
 }
